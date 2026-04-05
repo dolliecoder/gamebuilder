@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>⭕ Tic Tac Toe</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Get three in a row to win!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Status -->
+          <div class="game-status"></div>
+
+          <!-- Game Grid -->
+          <div class="tictactoe-grid"></div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="reset">
+              🔄 New Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li><strong>Player 1:</strong> Mark your moves with <strong>X</strong></li>
+              <li><strong>Player 2:</strong> Mark your moves with <strong>O</strong></li>
+              <li>Take turns clicking on empty squares</li>
+              <li>First player to get 3 marks in a row (horizontal, vertical, or diagonal) wins!</li>
+              <li>If all 9 squares are filled with no winner, it's a draw</li>
+              <li>Results are saved automatically to the dashboard</li>
+            </ul>
+          </div>
+
+          <!-- Strategy Tips -->
+          <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05)); border-radius: 12px; padding: 2rem; margin-top: 2rem; border-left: 4px solid #667eea;">
+            <h3 style="margin-top: 0; color: #667eea;">💡 Strategy Tips</h3>
+            <p style="color: #666; margin: 0;">
+              The center square (position 5) is the most strategic. Control the center and corners to increase your chances of winning!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="storage.js"></script>
+    <script src="tictactoe.js"></script>
+  </body>
+</html>

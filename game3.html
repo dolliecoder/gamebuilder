@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction Timer - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>⚡ Reaction Timer</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Test your reflexes and beat your best time!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Message -->
+          <div class="game-message"></div>
+
+          <!-- Display Area -->
+          <div class="timer-display reaction-display">Click "Start" to begin!</div>
+
+          <!-- Click Area -->
+          <div class="reaction-click-area" style="
+            min-height: 300px;
+            margin: 2rem 0;
+            border: 3px dashed #667eea;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: #999;
+          ">
+            Click here when you see "CLICK!"
+          </div>
+
+          <!-- Statistics -->
+          <div class="reaction-stats"></div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-large" data-action="start">
+              Start
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ol style="color: #666; line-height: 1.8;">
+              <li>Click the "Start" button</li>
+              <li>Wait for the signal to change from "Wait..." to "CLICK!"</li>
+              <li>Click as fast as possible when you see "CLICK!"</li>
+              <li>Your reaction time will be displayed in milliseconds</li>
+              <li>Try multiple times to beat your best score!</li>
+              <li><strong>Be careful:</strong> Clicking too early counts as a failed attempt</li>
+            </ol>
+          </div>
+
+          <!-- Tips -->
+          <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05)); border-radius: 12px; padding: 2rem; margin-top: 2rem; border-left: 4px solid #667eea;">
+            <h3 style="margin-top: 0; color: #667eea;">💡 Tips for Better Scores</h3>
+            <ul style="color: #666; margin: 0; padding-left: 1.5rem;">
+              <li>Keep your hand relaxed and ready on the mouse/touchpad</li>
+              <li>Focus on the display area and stay alert</li>
+              <li>Avoid clicking too early - patience is key!</li>
+              <li>Average human reaction time is 200-300ms</li>
+              <li>Professional gamers average 150-200ms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="storage.js"></script>
+    <script src="reaction.js"></script>
+  </body>
+</html>

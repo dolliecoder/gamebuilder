@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🧠 Memory Game</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Match all the pairs to win!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Moves</div>
+              <div class="stat-value move-counter">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Cards</div>
+              <div class="stat-value">16</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Pairs</div>
+              <div class="stat-value">8</div>
+            </div>
+          </div>
+
+          <!-- Game Message -->
+          <div class="game-message"></div>
+
+          <!-- Game Grid -->
+          <div class="memory-grid"></div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="reset">
+              🔄 Reset Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Click on cards to flip them and reveal the emojis</li>
+              <li>Try to find matching pairs</li>
+              <li>When you match a pair, they stay flipped</li>
+              <li>Your goal is to match all pairs in as few moves as possible</li>
+              <li>Your score (number of moves) will be saved to the dashboard</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="storage.js"></script>
+    <script src="memory.js"></script>
+  </body>
+</html>
