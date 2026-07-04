@@ -346,7 +346,7 @@ p {
 
 .game-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
