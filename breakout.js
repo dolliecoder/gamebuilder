@@ -9,8 +9,8 @@ const BreakoutGame = (() => {
   let isGameOver = false;
   
   // Game Objects
-  let ball = { x: 0, y: 0, dx: 4, dy: -4, radius: 8 };
-  let paddle = { h: 10, w: 75, x: 0, speed: 7 };
+  let ball = { x: 0, y: 0, dx: 3, dy: -3, radius: 8 };
+  let paddle = { h: 10, w: 75, x: 0, speed: 6 };
   
   // Bricks
   let brickRowCount = 5;
@@ -102,8 +102,8 @@ const BreakoutGame = (() => {
   const resetGame = () => {
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 30;
-    ball.dx = 4; // Reset ball speed
-    ball.dy = -4; // Reset ball speed
+    ball.dx = 3; // Reset ball speed
+    ball.dy = -3; // Reset ball speed
     paddle.x = (canvas.width - paddle.w) / 2;
     score = 0;
     isGameOver = false;

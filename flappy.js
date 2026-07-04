@@ -18,8 +18,8 @@ const FlappyGame = (() => {
     y: 150,
     radius: 12,
     velocity: 0,
-    gravity: 0.25,
-    jump: -4.6,
+    gravity: 0.15,
+    jump: -4,
     draw: function() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -69,8 +69,8 @@ const FlappyGame = (() => {
   const pipes = {
     items: [],
     width: 50,
-    gap: 120,
-    dx: 2,
+    gap: 150,
+    dx: 1.5,
     draw: function() {
       for (let i = 0; i < this.items.length; i++) {
         let p = this.items[i];
@@ -87,8 +87,8 @@ const FlappyGame = (() => {
       }
     },
     update: function() {
-      // Add new pipe every 100 frames
-      if (frames % 100 === 0) {
+      // Add new pipe every 130 frames
+      if (frames % 130 === 0) {
         let maxPos = canvas.height - fg.h - this.gap - 20;
         let minPos = 20;
         let topHeight = Math.floor(Math.random() * (maxPos - minPos + 1) + minPos);
