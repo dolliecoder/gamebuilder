@@ -231,7 +231,12 @@ p {
   display: flex;
   flex-direction: column;
   background: #0f172a;
-  animation: fadeIn 0.5s ease-out;
+  animation: pageFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pageFadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .page-header {
