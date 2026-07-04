@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Tic Tac Toe Game
+   APEXPLAY - Tic Tac Toe Game
    Two-player game with win/draw detection
    ======================================== */
 

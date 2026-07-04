@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Rock Paper Scissors
+   APEXPLAY - Rock Paper Scissors
    ======================================== */
 
 const RPSGame = (() => {

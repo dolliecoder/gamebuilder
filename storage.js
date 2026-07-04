@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Storage Manager
+   APEXPLAY - Storage Manager
    Handles all localStorage operations for game scores and statistics
    ======================================== */
 

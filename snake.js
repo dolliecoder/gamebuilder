@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Snake Game
+   APEXPLAY - Snake Game
    Canvas-based snake game with scores
    ======================================== */
 

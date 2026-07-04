@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Simon Says
+   APEXPLAY - Simon Says
    ======================================== */
 
 const SimonGame = (() => {

@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Flappy Bird
+   APEXPLAY - Flappy Bird
    ======================================== */
 
 const FlappyGame = (() => {

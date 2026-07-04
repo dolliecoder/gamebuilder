@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Connect Four
+   APEXPLAY - Connect Four
    ======================================== */
 
 const Connect4Game = (() => {

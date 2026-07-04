@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Wordle Clone
+   APEXPLAY - Wordle Clone
    ======================================== */
 
 const WordleGame = (() => {

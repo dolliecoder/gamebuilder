@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Memory Game
+   APEXPLAY - Memory Game
    Card matching game with move tracking
    ======================================== */
 

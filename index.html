@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameHub - Play Amazing Games</title>
+    <title>ApexPlay - Play Amazing Games</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="page">
       <!-- Page Header -->
       <div class="page-header">
-        <h1>🎮 GameHub</h1>
-        <p style="color: white; font-size: 1.1rem; margin: 0;">
+        <h1 class="neon-title">🎮 ApexPlay</h1>
+        <p style="color: var(--text-light); font-size: 1.1rem; margin: 0; margin-bottom: 1.5rem;">
           Discover amazing games, challenge yourself, and compete with others!
         </p>
+        <div>
+          <a href="dashboard.html" class="btn btn-primary" style="margin-right: 10px;">📊 Dashboard</a>
+          <button class="btn btn-secondary" onclick="document.querySelector('.game-grid').scrollIntoView({behavior: 'smooth'})">🎮 Play Now</button>
+        </div>
       </div>
 
       <!-- Page Content -->

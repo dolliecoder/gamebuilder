@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Space Invaders
+   APEXPLAY - Space Invaders
    ======================================== */
 
 const InvadersGame = (() => {

@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Main Stylesheet
+   APEXPLAY - Main Stylesheet
    Modern Gaming Platform with Playful Aesthetic
    ======================================== */
 
@@ -236,28 +236,34 @@ p {
 
 .page-header {
   text-align: center;
-  padding: var(--spacing-2xl) var(--spacing-xl);
-  background: var(--primary-gradient);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background: transparent;
   color: var(--text-light);
   position: relative;
-  overflow: hidden;
 }
 
-.page-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-  z-index: 0;
-  animation: slide 20s linear infinite;
+.neon-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px var(--primary-color),
+    0 0 40px var(--primary-color),
+    0 0 80px var(--secondary-color);
+  animation: neonPulse 1.5s infinite alternate;
+  margin-bottom: var(--spacing-md);
+  /* Reset previous h1 styles if applied */
+  background: none;
+  -webkit-text-fill-color: #fff;
 }
 
-.page-header > * {
-  position: relative;
-  z-index: 1;
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--primary-color), 0 0 40px var(--primary-color); }
+  100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px var(--primary-color), 0 0 80px var(--secondary-color), 0 0 100px var(--secondary-color); }
 }
 
 .page-content {

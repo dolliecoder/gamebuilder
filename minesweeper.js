@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Minesweeper
+   APEXPLAY - Minesweeper
    ======================================== */
 
 const MinesweeperGame = (() => {

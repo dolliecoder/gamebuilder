@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Typing Speed Test
+   APEXPLAY - Typing Speed Test
    ======================================== */
 
 const TypingGame = (() => {

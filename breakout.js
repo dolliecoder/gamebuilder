@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Brick Breaker (Breakout)
+   APEXPLAY - Brick Breaker (Breakout)
    ======================================== */
 
 const BreakoutGame = (() => {

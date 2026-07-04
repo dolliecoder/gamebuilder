@@ -1,5 +1,5 @@
 /* ========================================
-   GAMEHUB - Audio Manager
+   APEXPLAY - Audio Manager
    Synthesizes sound effects using Web Audio API
    ======================================== */
 

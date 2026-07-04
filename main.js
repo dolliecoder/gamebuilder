@@ -1,9 +1,9 @@
 /* ========================================
-   GAMEHUB - Main Application
+   APEXPLAY - Main Application
    Home page navigation and game selection
    ======================================== */
 
-const GameHub = (() => {
+const ApexPlay = (() => {
   const GAMES = {
     memory: {
       id: 'memory',
@@ -181,7 +181,7 @@ const GameHub = (() => {
     } else {
       lastGameDiv.innerHTML = `
         <div class="status-message info">
-          Welcome to GameHub! Select a game to get started.
+          Welcome to ApexPlay! Select a game to get started.
         </div>
       `;
     }
@@ -204,8 +204,8 @@ const GameHub = (() => {
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    GameHub.init();
+    ApexPlay.init();
   });
 } else {
-  GameHub.init();
+  ApexPlay.init();
 }
