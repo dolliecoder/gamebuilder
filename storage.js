@@ -123,6 +123,7 @@ const StorageManager = (() => {
     incrementTotalGames();
     setLastGame('Memory Game');
     checkAchievements();
+    if (typeof DB !== 'undefined') DB.saveScore('memory', moves, true);
     return newScore;
   };
 
@@ -194,6 +195,23 @@ const StorageManager = (() => {
     incrementTotalGames();
     setLastGame(gameName);
     checkAchievements();
+    
+    // Map STORAGE_KEYS to shorter DB IDs
+    const dbKeyMap = {
+      [STORAGE_KEYS.BREAKOUT_BEST]: 'breakout',
+      [STORAGE_KEYS.SNAKE_BEST]: 'snake',
+      [STORAGE_KEYS.PUZZLE2048_BEST]: '2048',
+      [STORAGE_KEYS.SIMON_BEST]: 'simon',
+      [STORAGE_KEYS.WHACKAMOLE_BEST]: 'whackamole',
+      [STORAGE_KEYS.FLAPPY_BEST]: 'flappy',
+      [STORAGE_KEYS.MINESWEEPER_BEST]: 'minesweeper',
+      [STORAGE_KEYS.INVADERS_BEST]: 'invaders',
+      [STORAGE_KEYS.TETRIS_BEST]: 'tetris',
+    };
+    if (typeof DB !== 'undefined' && dbKeyMap[key] && isNewBest) {
+      DB.saveScore(dbKeyMap[key], typeof score === 'number' ? score : score.score || 0);
+    }
+
     return isNewBest;
   };
 
