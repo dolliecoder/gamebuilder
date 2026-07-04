@@ -249,12 +249,9 @@ p {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px var(--primary-color),
-    0 0 40px var(--primary-color),
-    0 0 80px var(--secondary-color);
-  animation: neonPulse 1.5s infinite alternate;
+    0 0 5px var(--primary-color),
+    0 0 15px var(--primary-color);
+  animation: neonPulse 2s infinite alternate;
   margin-bottom: var(--spacing-md);
   /* Reset previous h1 styles if applied */
   background: none;
@@ -262,8 +259,8 @@ p {
 }
 
 @keyframes neonPulse {
-  0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--primary-color), 0 0 40px var(--primary-color); }
-  100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px var(--primary-color), 0 0 80px var(--secondary-color), 0 0 100px var(--secondary-color); }
+  0% { text-shadow: 0 0 2px #fff, 0 0 10px var(--primary-color); }
+  100% { text-shadow: 0 0 5px #fff, 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color); }
 }
 
 .page-content {
