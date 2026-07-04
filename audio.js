@@ -35,6 +35,7 @@ const AudioManager = (() => {
 
   return {
     init,
+    playTone,
     playClick: () => playTone(600, 'sine', 0.1, 0.1),
     playSuccess: () => {
       playTone(400, 'sine', 0.1, 0.1);
