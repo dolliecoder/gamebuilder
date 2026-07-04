@@ -24,7 +24,17 @@ const StorageManager = (() => {
     LAST_GAME: 'gamehub_last_game',
     TOTAL_GAMES: 'gamehub_total_games',
     GAME_HISTORY: 'gamehub_game_history',
+    ACHIEVEMENTS: 'gamehub_achievements',
   };
+
+  const ACHIEVEMENTS_LIST = [
+    { id: 'first_blood', name: 'First Blood', description: 'Play your first game.', icon: '🎯' },
+    { id: 'centurion', name: 'Centurion', description: 'Score 100 in Flappy Bird.', icon: '🐦' },
+    { id: 'brainiac', name: 'Brainiac', description: 'Complete Memory in under 20 moves.', icon: '🧠' },
+    { id: 'snake_charmer', name: 'Snake Charmer', description: 'Score 50 in Snake.', icon: '🐍' },
+    { id: 'brick_layer', name: 'Brick Layer', description: 'Score 100 in Breakout.', icon: '🧱' },
+    { id: 'dedicated', name: 'Dedicated Gamer', description: 'Play 10 total games.', icon: '🎮' }
+  ];
 
   /**
    * Initialize storage if it doesn't exist
@@ -84,6 +94,9 @@ const StorageManager = (() => {
     if (!localStorage.getItem(STORAGE_KEYS.GAME_HISTORY)) {
       localStorage.setItem(STORAGE_KEYS.GAME_HISTORY, JSON.stringify([]));
     }
+    if (!localStorage.getItem(STORAGE_KEYS.ACHIEVEMENTS)) {
+      localStorage.setItem(STORAGE_KEYS.ACHIEVEMENTS, JSON.stringify([]));
+    }
   };
 
   /**
@@ -109,7 +122,7 @@ const StorageManager = (() => {
     addToGameHistory('Memory Game', `${moves} moves`, 'completed');
     incrementTotalGames();
     setLastGame('Memory Game');
-
+    checkAchievements();
     return newScore;
   };
 
@@ -139,7 +152,7 @@ const StorageManager = (() => {
     addToGameHistory('Tic Tac Toe', result.charAt(0).toUpperCase() + result.slice(1), 'completed');
     incrementTotalGames();
     setLastGame('Tic Tac Toe');
-
+    checkAchievements();
     return newResult;
   };
 
@@ -180,6 +193,7 @@ const StorageManager = (() => {
     addToGameHistory(gameName, `Score: ${displayScore}`, 'completed');
     incrementTotalGames();
     setLastGame(gameName);
+    checkAchievements();
     return isNewBest;
   };
 
@@ -271,7 +285,40 @@ const StorageManager = (() => {
         tetrisBest: getHighScore(STORAGE_KEYS.TETRIS_BEST),
       },
       history: getGameHistory(),
+      achievements: getUnlockedAchievements(),
     };
+  };
+
+  const getUnlockedAchievements = () => {
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.ACHIEVEMENTS)) || [];
+  };
+
+  const unlockAchievement = (id) => {
+    const unlocked = getUnlockedAchievements();
+    if (!unlocked.includes(id)) {
+      unlocked.push(id);
+      localStorage.setItem(STORAGE_KEYS.ACHIEVEMENTS, JSON.stringify(unlocked));
+      
+      const ach = ACHIEVEMENTS_LIST.find(a => a.id === id);
+      if (ach) {
+        // Optional: play a success sound if we unlocked it right now
+        if (typeof AudioManager !== 'undefined') AudioManager.playSuccess();
+        alert(`🏆 Achievement Unlocked: ${ach.name}!\n${ach.description}`);
+      }
+    }
+  };
+
+  const checkAchievements = () => {
+    const totalGames = getTotalGames();
+    if (totalGames >= 1) unlockAchievement('first_blood');
+    if (totalGames >= 10) unlockAchievement('dedicated');
+
+    if (getHighScore(STORAGE_KEYS.FLAPPY_BEST) >= 100) unlockAchievement('centurion');
+    if (getHighScore(STORAGE_KEYS.SNAKE_BEST) >= 50) unlockAchievement('snake_charmer');
+    if (getHighScore(STORAGE_KEYS.BREAKOUT_BEST) >= 100) unlockAchievement('brick_layer');
+
+    const memBest = getMemoryBestScore();
+    if (memBest && memBest.moves < 20) unlockAchievement('brainiac');
   };
 
   // Public API
@@ -294,6 +341,9 @@ const StorageManager = (() => {
     getTotalGames,
     clearAll,
     getDashboardData,
+    ACHIEVEMENTS_LIST,
+    getUnlockedAchievements,
+    checkAchievements
   };
 })();
 
