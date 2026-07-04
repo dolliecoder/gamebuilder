@@ -8,8 +8,7 @@ const StorageManager = (() => {
     MEMORY_SCORES: 'gamehub_memory_scores',
     MEMORY_BEST: 'gamehub_memory_best',
     TICTACTOE_RESULTS: 'gamehub_tictactoe_results',
-    REACTION_TIMES: 'gamehub_reaction_times',
-    REACTION_BEST: 'gamehub_reaction_best',
+    BREAKOUT_BEST: 'gamehub_breakout_best',
     SNAKE_BEST: 'gamehub_snake_best',
     PUZZLE2048_BEST: 'gamehub_2048_best',
     SIMON_BEST: 'gamehub_simon_best',
@@ -34,11 +33,8 @@ const StorageManager = (() => {
     if (!localStorage.getItem(STORAGE_KEYS.TICTACTOE_RESULTS)) {
       localStorage.setItem(STORAGE_KEYS.TICTACTOE_RESULTS, JSON.stringify([]));
     }
-    if (!localStorage.getItem(STORAGE_KEYS.REACTION_TIMES)) {
-      localStorage.setItem(STORAGE_KEYS.REACTION_TIMES, JSON.stringify([]));
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.REACTION_BEST)) {
-      localStorage.setItem(STORAGE_KEYS.REACTION_BEST, JSON.stringify(null));
+    if (!localStorage.getItem(STORAGE_KEYS.BREAKOUT_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.BREAKOUT_BEST, JSON.stringify(0));
     }
     if (!localStorage.getItem(STORAGE_KEYS.SNAKE_BEST)) {
       localStorage.setItem(STORAGE_KEYS.SNAKE_BEST, JSON.stringify(0));
@@ -139,56 +135,6 @@ const StorageManager = (() => {
   };
 
   /**
-   * Reaction Timer Functions
-   */
-  const saveReactionTime = (milliseconds) => {
-    const times = JSON.parse(localStorage.getItem(STORAGE_KEYS.REACTION_TIMES)) || [];
-    const newTime = {
-      milliseconds,
-      date: new Date().toLocaleDateString(),
-      timestamp: Date.now(),
-    };
-    times.push(newTime);
-    localStorage.setItem(STORAGE_KEYS.REACTION_TIMES, JSON.stringify(times));
-
-    // Update best time
-    const currentBest = JSON.parse(localStorage.getItem(STORAGE_KEYS.REACTION_BEST));
-    if (!currentBest || milliseconds < currentBest.milliseconds) {
-      localStorage.setItem(STORAGE_KEYS.REACTION_BEST, JSON.stringify(newTime));
-    }
-
-    // Update game history
-    addToGameHistory('Reaction Timer', `${milliseconds}ms`, 'completed');
-    incrementTotalGames();
-    setLastGame('Reaction Timer');
-
-    return newTime;
-  };
-
-  const getReactionTimes = () => {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.REACTION_TIMES)) || [];
-  };
-
-  const getReactionBestTime = () => {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.REACTION_BEST));
-  };
-
-  const getReactionStats = () => {
-    const times = getReactionTimes();
-    if (times.length === 0) return { count: 0, best: null, average: null };
-
-    const milliseconds = times.map((t) => t.milliseconds);
-    const best = Math.min(...milliseconds);
-    const average = Math.round(milliseconds.reduce((a, b) => a + b, 0) / milliseconds.length);
-
-    return {
-      count: times.length,
-      best,
-      average,
-    };
-  };
-
-  /**
    * New Games Functions
    */
   const saveHighScore = (key, score, gameName) => {
@@ -283,11 +229,7 @@ const StorageManager = (() => {
         results: getTicTacToeResults(),
         stats: getTicTacToeStats(),
       },
-      reaction: {
-        times: getReactionTimes(),
-        best: getReactionBestTime(),
-        stats: getReactionStats(),
-      },
+      breakout: getHighScore(STORAGE_KEYS.BREAKOUT_BEST),
       newGames: {
         snakeBest: getHighScore(STORAGE_KEYS.SNAKE_BEST),
         puzzle2048Best: getHighScore(STORAGE_KEYS.PUZZLE2048_BEST),
@@ -309,10 +251,6 @@ const StorageManager = (() => {
     saveTicTacToeResult,
     getTicTacToeResults,
     getTicTacToeStats,
-    saveReactionTime,
-    getReactionTimes,
-    getReactionBestTime,
-    getReactionStats,
     saveHighScore,
     getHighScore,
     STORAGE_KEYS,

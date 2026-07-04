@@ -20,10 +20,10 @@ const GameHub = (() => {
       url: 'game2.html',
     },
     reaction: {
-      id: 'reaction',
-      title: 'Reaction Timer',
-      description: 'Test your reflexes! Wait for the signal and click as fast as you can. Try to beat your best time.',
-      emoji: '⚡',
+      id: 'game3',
+      title: 'Brick Breaker',
+      description: 'Bounce the ball off the paddle to break all the colorful bricks.',
+      emoji: '🧱',
       url: 'game3.html',
     },
     snake: {
