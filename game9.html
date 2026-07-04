@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .rps-arena {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3rem 0;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border-radius: 20px;
+        position: relative;
+      }
+      .player-side {
+        text-align: center;
+        flex: 1;
+      }
+      .rps-emoji {
+        font-size: 5rem;
+        display: block;
+        margin-bottom: 1rem;
+        transition: transform 0.3s;
+      }
+      .rps-emoji.shake-left {
+        animation: shakeLeft 0.5s ease-in-out infinite;
+      }
+      .rps-emoji.shake-right {
+        animation: shakeRight 0.5s ease-in-out infinite;
+      }
+      .vs-text {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #667eea;
+        padding: 0 1rem;
+      }
+      .rps-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .rps-btn {
+        font-size: 3rem;
+        padding: 1rem;
+        border-radius: 50%;
+        background: white;
+        border: 4px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      .rps-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        border-color: #667eea;
+      }
+      .rps-btn:active {
+        transform: scale(0.95);
+      }
+      .rps-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      @keyframes shakeLeft {
+        0%, 100% { transform: rotate(0deg) translateY(0); }
+        25% { transform: rotate(-15deg) translateY(-10px); }
+        75% { transform: rotate(15deg) translateY(10px); }
+      }
+      @keyframes shakeRight {
+        0%, 100% { transform: rotate(0deg) translateY(0); scaleX(-1); }
+        25% { transform: rotate(15deg) translateY(-10px); scaleX(-1); }
+        75% { transform: rotate(-15deg) translateY(10px); scaleX(-1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>✊ Rock Paper Scissors</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Defeat the AI to build the highest winning streak!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Current Streak</div>
+              <div class="stat-value" id="rps-streak">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Streak</div>
+              <div class="stat-value" id="rps-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.5rem; color: #667eea; margin-top: 1rem;">Choose your weapon!</div>
+
+          <!-- Game Area -->
+          <div class="rps-arena">
+            <div class="player-side">
+              <span class="rps-emoji" id="player-hand">👊</span>
+              <h3>You</h3>
+            </div>
+            <div class="vs-text">VS</div>
+            <div class="player-side">
+              <span class="rps-emoji" id="ai-hand" style="transform: scaleX(-1);">👊</span>
+              <h3>AI</h3>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="rps-controls" id="controls">
+            <button class="rps-btn" data-choice="rock">✊</button>
+            <button class="rps-btn" data-choice="paper">✋</button>
+            <button class="rps-btn" data-choice="scissors">✌️</button>
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Select Rock ✊, Paper ✋, or Scissors ✌️.</li>
+              <li>Rock beats Scissors, Scissors beats Paper, Paper beats Rock.</li>
+              <li>Winning adds +1 to your streak.</li>
+              <li>Losing resets your streak to 0.</li>
+              <li>A tie leaves your streak unchanged.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="rps.js"></script>
+  </body>
+</html>

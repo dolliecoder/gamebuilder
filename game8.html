@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Speed Test - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .typing-area {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        font-size: 1.5rem;
+        line-height: 2;
+        text-align: left;
+        color: #999;
+        position: relative;
+        overflow: hidden;
+      }
+      .typing-text span {
+        transition: color 0.1s;
+      }
+      .typing-text span.correct {
+        color: #2ed573;
+      }
+      .typing-text span.incorrect {
+        color: #ff4757;
+        background: #ffeaa7;
+        border-radius: 3px;
+      }
+      .typing-text span.current {
+        border-bottom: 3px solid #667eea;
+        color: #333;
+      }
+      #typing-input {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .progress-bar {
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin-top: 1rem;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        width: 100%;
+        transition: width 1s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>⌨️ Typing Speed Test</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Type as fast and accurately as you can in 30 seconds!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">WPM</div>
+              <div class="stat-value" id="typing-wpm">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Accuracy</div>
+              <div class="stat-value" id="typing-accuracy">100%</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best WPM</div>
+              <div class="stat-value" id="typing-best">0</div>
+            </div>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="typing-timer"></div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; color: #667eea; margin-top: 1rem;">Click "Start Game" to begin</div>
+
+          <!-- Game Area -->
+          <div class="typing-area" id="typing-box" style="filter: blur(4px); pointer-events: none;">
+            <div class="typing-text" id="typing-text"></div>
+            <input type="text" id="typing-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-large" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Click <strong>Start Game</strong> to reveal the text.</li>
+              <li>Start typing exactly what you see.</li>
+              <li>You have exactly 30 seconds.</li>
+              <li>Your Words Per Minute (WPM) and accuracy are calculated at the end!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="typing.js"></script>
+  </body>
+</html>

@@ -10,6 +10,12 @@ const StorageManager = (() => {
     TICTACTOE_RESULTS: 'gamehub_tictactoe_results',
     REACTION_TIMES: 'gamehub_reaction_times',
     REACTION_BEST: 'gamehub_reaction_best',
+    SNAKE_BEST: 'gamehub_snake_best',
+    PUZZLE2048_BEST: 'gamehub_2048_best',
+    SIMON_BEST: 'gamehub_simon_best',
+    WHACKAMOLE_BEST: 'gamehub_whackamole_best',
+    TYPING_BEST: 'gamehub_typing_best',
+    RPS_STREAK: 'gamehub_rps_streak',
     LAST_GAME: 'gamehub_last_game',
     TOTAL_GAMES: 'gamehub_total_games',
     GAME_HISTORY: 'gamehub_game_history',
@@ -33,6 +39,24 @@ const StorageManager = (() => {
     }
     if (!localStorage.getItem(STORAGE_KEYS.REACTION_BEST)) {
       localStorage.setItem(STORAGE_KEYS.REACTION_BEST, JSON.stringify(null));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.SNAKE_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.SNAKE_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.PUZZLE2048_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.PUZZLE2048_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.SIMON_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.SIMON_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.WHACKAMOLE_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.WHACKAMOLE_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.TYPING_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.TYPING_BEST, JSON.stringify({ wpm: 0, accuracy: 0 }));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.RPS_STREAK)) {
+      localStorage.setItem(STORAGE_KEYS.RPS_STREAK, JSON.stringify(0));
     }
     if (!localStorage.getItem(STORAGE_KEYS.TOTAL_GAMES)) {
       localStorage.setItem(STORAGE_KEYS.TOTAL_GAMES, JSON.stringify(0));
@@ -165,6 +189,35 @@ const StorageManager = (() => {
   };
 
   /**
+   * New Games Functions
+   */
+  const saveHighScore = (key, score, gameName) => {
+    const currentBest = JSON.parse(localStorage.getItem(key)) || 0;
+    
+    // For typing, score might be an object {wpm, accuracy}
+    let isNewBest = false;
+    if (typeof score === 'object') {
+      isNewBest = score.wpm > (currentBest.wpm || 0);
+    } else {
+      isNewBest = score > currentBest;
+    }
+
+    if (isNewBest) {
+      localStorage.setItem(key, JSON.stringify(score));
+    }
+
+    let displayScore = typeof score === 'object' ? `${score.wpm} WPM` : score.toString();
+    addToGameHistory(gameName, `Score: ${displayScore}`, 'completed');
+    incrementTotalGames();
+    setLastGame(gameName);
+    return isNewBest;
+  };
+
+  const getHighScore = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+  };
+
+  /**
    * Game History and General Functions
    */
   const addToGameHistory = (gameName, result, status) => {
@@ -235,6 +288,14 @@ const StorageManager = (() => {
         best: getReactionBestTime(),
         stats: getReactionStats(),
       },
+      newGames: {
+        snakeBest: getHighScore(STORAGE_KEYS.SNAKE_BEST),
+        puzzle2048Best: getHighScore(STORAGE_KEYS.PUZZLE2048_BEST),
+        simonBest: getHighScore(STORAGE_KEYS.SIMON_BEST),
+        whackamoleBest: getHighScore(STORAGE_KEYS.WHACKAMOLE_BEST),
+        typingBest: getHighScore(STORAGE_KEYS.TYPING_BEST),
+        rpsStreak: getHighScore(STORAGE_KEYS.RPS_STREAK)
+      },
       history: getGameHistory(),
     };
   };
@@ -252,6 +313,9 @@ const StorageManager = (() => {
     getReactionTimes,
     getReactionBestTime,
     getReactionStats,
+    saveHighScore,
+    getHighScore,
+    STORAGE_KEYS,
     addToGameHistory,
     getGameHistory,
     setLastGame,

@@ -26,6 +26,48 @@ const GameHub = (() => {
       emoji: '⚡',
       url: 'game3.html',
     },
+    snake: {
+      id: 'snake',
+      title: 'Snake Game',
+      description: 'The classic grid game. Eat apples to grow longer, but don\'t hit the walls or yourself!',
+      emoji: '🐍',
+      url: 'game4.html',
+    },
+    puzzle2048: {
+      id: 'puzzle2048',
+      title: '2048 Puzzle',
+      description: 'Slide and merge matching numbers to reach the legendary 2048 tile!',
+      emoji: '🧩',
+      url: 'game5.html',
+    },
+    simon: {
+      id: 'simon',
+      title: 'Simon Says',
+      description: 'Test your memory. Watch the color sequence and repeat it back correctly!',
+      emoji: '🎨',
+      url: 'game6.html',
+    },
+    whackamole: {
+      id: 'whackamole',
+      title: 'Whack-a-Mole',
+      description: 'Whack the moles as they pop up before the time runs out!',
+      emoji: '🔨',
+      url: 'game7.html',
+    },
+    typing: {
+      id: 'typing',
+      title: 'Typing Speed',
+      description: 'Test your typing speed and accuracy. Type the words as fast as you can!',
+      emoji: '⌨️',
+      url: 'game8.html',
+    },
+    rps: {
+      id: 'rps',
+      title: 'Rock Paper Scissors',
+      description: 'Play against the AI. Can you get the highest winning streak?',
+      emoji: '✊',
+      url: 'game9.html',
+    },
   };
 
   /**

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🐍 Snake Game</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Eat the apples and grow as long as possible!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Current Score</div>
+              <div class="stat-value" id="snake-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="snake-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status"></div>
+
+          <!-- Game Grid -->
+          <div style="display: flex; justify-content: center; margin: 2rem 0;">
+            <canvas id="snake-board" width="400" height="400" style="
+              background: #0f0f1e; 
+              border-radius: 12px; 
+              box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+              border: 4px solid #667eea;
+            "></canvas>
+          </div>
+          
+          <!-- Mobile Controls -->
+          <div class="mobile-controls" style="display: none; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: 50px 50px 50px; gap: 10px; text-align: center;">
+              <div></div>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="UP">⬆️</button>
+              <div></div>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="LEFT">⬅️</button>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="DOWN">⬇️</button>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="RIGHT">➡️</button>
+            </div>
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Use the <strong>Arrow Keys</strong> or <strong>W, A, S, D</strong> to steer the snake.</li>
+              <li>Eat the red apples to grow longer and increase your score.</li>
+              <li>Don't hit the walls or your own tail, or it's game over!</li>
+              <li>Your best score is saved automatically.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="snake.js"></script>
+  </body>
+</html>

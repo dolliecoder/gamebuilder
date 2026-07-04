@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Says - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .simon-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 320px;
+        height: 320px;
+        margin: 2rem auto;
+        padding: 20px;
+        background: #1a1a2e;
+        border-radius: 50%;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .simon-btn {
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: opacity 0.1s;
+      }
+      .simon-btn:active {
+        opacity: 0.8;
+      }
+      .simon-btn.active {
+        opacity: 1;
+        box-shadow: 0 0 30px currentColor;
+      }
+      #simon-0 { background: #ff4757; color: #ff4757; border-top-left-radius: 100%; }
+      #simon-1 { background: #2ed573; color: #2ed573; border-top-right-radius: 100%; }
+      #simon-2 { background: #1e90ff; color: #1e90ff; border-bottom-left-radius: 100%; }
+      #simon-3 { background: #ffa502; color: #ffa502; border-bottom-right-radius: 100%; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🎨 Simon Says</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Memorize the pattern and repeat it back!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Level</div>
+              <div class="stat-value" id="simon-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Level</div>
+              <div class="stat-value" id="simon-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem;"></div>
+
+          <!-- Game Grid -->
+          <div class="simon-grid" id="simon-board">
+            <button class="simon-btn" id="simon-0" data-index="0"></button>
+            <button class="simon-btn" id="simon-1" data-index="1"></button>
+            <button class="simon-btn" id="simon-2" data-index="2"></button>
+            <button class="simon-btn" id="simon-3" data-index="3"></button>
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-large" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Click <strong>Start Game</strong> to begin.</li>
+              <li>Watch the colors light up and listen to the sounds.</li>
+              <li>When the sequence is finished, repeat it back by clicking the colors in the exact same order.</li>
+              <li>Each round, a new color is added to the end of the sequence.</li>
+              <li>One mistake and it's game over!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="simon.js"></script>
+  </body>
+</html>

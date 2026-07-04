@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048 Puzzle - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .puzzle-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background: #bbada0;
+        padding: 10px;
+        border-radius: 12px;
+        width: 320px;
+        height: 320px;
+        margin: 2rem auto;
+      }
+      .puzzle-cell {
+        background: rgba(238, 228, 218, 0.35);
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #776e65;
+        transition: all 0.15s ease-in-out;
+      }
+      /* Colors for different numbers */
+      .cell-2 { background: #eee4da; }
+      .cell-4 { background: #ede0c8; }
+      .cell-8 { background: #f2b179; color: #f9f6f2; }
+      .cell-16 { background: #f59563; color: #f9f6f2; }
+      .cell-32 { background: #f67c5f; color: #f9f6f2; }
+      .cell-64 { background: #f65e3b; color: #f9f6f2; }
+      .cell-128 { background: #edcf72; color: #f9f6f2; font-size: 1.5rem; box-shadow: 0 0 10px rgba(243, 215, 116, 0.5); }
+      .cell-256 { background: #edcc61; color: #f9f6f2; font-size: 1.5rem; box-shadow: 0 0 20px rgba(243, 215, 116, 0.6); }
+      .cell-512 { background: #edc850; color: #f9f6f2; font-size: 1.5rem; box-shadow: 0 0 30px rgba(243, 215, 116, 0.7); }
+      .cell-1024 { background: #edc53f; color: #f9f6f2; font-size: 1.2rem; box-shadow: 0 0 40px rgba(243, 215, 116, 0.8); }
+      .cell-2048 { background: #edc22e; color: #f9f6f2; font-size: 1.2rem; box-shadow: 0 0 50px rgba(243, 215, 116, 0.9); }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🧩 2048 Puzzle</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Slide tiles to combine them and reach 2048!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="puzzle-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="puzzle-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status"></div>
+
+          <!-- Game Grid -->
+          <div class="puzzle-grid" id="puzzle-board">
+            <!-- JS will populate 16 cells -->
+          </div>
+          
+          <!-- Mobile Controls -->
+          <div class="mobile-controls" style="display: none; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: 50px 50px 50px; gap: 10px; text-align: center;">
+              <div></div>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="UP">⬆️</button>
+              <div></div>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="LEFT">⬅️</button>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="DOWN">⬇️</button>
+              <button class="btn btn-outline" style="padding: 10px;" data-dir="RIGHT">➡️</button>
+            </div>
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="reset">
+              🔄 New Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Use the <strong>Arrow Keys</strong> or <strong>W, A, S, D</strong> to slide tiles.</li>
+              <li>Tiles with the same number merge into one when they touch.</li>
+              <li>Add them up to reach <strong>2048!</strong></li>
+              <li>The game ends when the board is full and no moves are possible.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="puzzle2048.js"></script>
+  </body>
+</html>

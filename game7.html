@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whack-a-Mole - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .mole-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 320px;
+        margin: 2rem auto;
+      }
+      .hole {
+        background: #3e2723;
+        border-radius: 50%;
+        height: 80px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: inset 0 10px 10px rgba(0,0,0,0.8);
+        border: 4px solid #5d4037;
+      }
+      .mole {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%238d6e63"/><circle cx="35" cy="40" r="8" fill="white"/><circle cx="65" cy="40" r="8" fill="white"/><circle cx="35" cy="40" r="3" fill="black"/><circle cx="65" cy="40" r="3" fill="black"/><ellipse cx="50" cy="60" rx="15" ry="10" fill="%23ffcdd2"/><circle cx="50" cy="55" r="5" fill="black"/></svg>') no-repeat center bottom;
+        background-size: 80%;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 100%;
+        transition: top 0.1s;
+        cursor: crosshair;
+      }
+      .mole.up {
+        top: 0;
+      }
+      .mole.whacked {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%238d6e63"/><path d="M 25 35 L 45 45 M 45 35 L 25 45" stroke="black" stroke-width="3"/><path d="M 55 35 L 75 45 M 75 35 L 55 45" stroke="black" stroke-width="3"/><ellipse cx="50" cy="60" rx="15" ry="10" fill="%23ffcdd2"/><circle cx="50" cy="55" r="5" fill="black"/></svg>') no-repeat center bottom;
+        background-size: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🔨 Whack-a-Mole</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Whack as many as you can in 30 seconds!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Time Left</div>
+              <div class="stat-value" id="mole-time">30</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="mole-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="mole-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; color: #667eea;"></div>
+
+          <!-- Game Grid -->
+          <div class="mole-grid" id="mole-board">
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+            <div class="hole"><div class="mole"></div></div>
+          </div>
+
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-large" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Click <strong>Start Game</strong> to begin.</li>
+              <li>Moles will randomly pop out of the holes.</li>
+              <li>Click on a mole to whack it and score a point.</li>
+              <li>You have 30 seconds to get the highest score possible.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="whackamole.js"></script>
+  </body>
+</html>
