@@ -77,6 +77,9 @@ const ReactionGame = (() => {
     gameState.reactionTime = null;
     gameState.randomDelay = Math.random() * 3000 + 1000; // 1-4 seconds
 
+    const messageDiv = document.querySelector('.game-message');
+    if (messageDiv) messageDiv.innerHTML = '';
+
     updateDisplay();
 
     // Wait for random delay then show "CLICK!"
@@ -107,11 +110,6 @@ const ReactionGame = (() => {
       gameState.clicked = true;
       saveReactionTime();
       updateDisplay();
-
-      // Auto-redirect after 3 seconds
-      setTimeout(() => {
-        window.location.href = 'dashboard.html';
-      }, 3000);
     }
   };
 
@@ -146,7 +144,7 @@ const ReactionGame = (() => {
       case STATES.WAITING:
         displayText = '⏳ Wait...';
         displayClass = 'warning';
-        if (clickArea) clickArea.style.pointerEvents = 'none';
+        if (clickArea) clickArea.style.pointerEvents = 'auto'; // allow early clicks
         break;
 
       case STATES.READY:
