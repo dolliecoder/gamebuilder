@@ -159,8 +159,8 @@
 
           <!-- Recent Games List -->
           <h2 style="margin-top: 2.5rem; margin-bottom: 1.5rem;">📝 Recent Games</h2>
-          <div id="recent-games-container" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <div id="recent-games" style="color: #999; text-align: center;">No games played yet</div>
+          <div id="recent-games-container" style="background: var(--light-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div id="recent-games" style="color: var(--text-light); text-align: center;">No games played yet</div>
           </div>
 
           <!-- Action Buttons -->
@@ -225,7 +225,7 @@
             <div style="font-size: 1.1rem; font-weight: 600; color: #667eea;">
               ${lastGame.name}
             </div>
-            <div style="font-size: 0.9rem; color: #999; margin-top: 0.25rem;">
+            <div style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.25rem;">
               ${lastGame.date}
             </div>
           `;
@@ -338,7 +338,7 @@
         const container = document.getElementById('recent-games');
 
         if (history.length === 0) {
-          container.innerHTML = '<div style="color: #999; text-align: center;">No games played yet</div>';
+          container.innerHTML = '<div style="color: var(--text-light); text-align: center;">No games played yet</div>';
           return;
         }
 
@@ -356,7 +356,7 @@
           ">
             <div>
               <div style="font-weight: 600; color: #333;">${game.gameName}</div>
-              <div style="font-size: 0.9rem; color: #999;">${game.date} at ${game.time}</div>
+              <div style="font-size: 0.9rem; color: var(--text-light);">${game.date} at ${game.time}</div>
             </div>
             <div style="
               background: linear-gradient(135deg, #667eea, #764ba2);

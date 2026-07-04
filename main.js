@@ -146,7 +146,7 @@ const GameHub = (() => {
   const createGameCard = (game) => {
     return `
       <div class="game-card">
-        <div class="game-card-icon">${game.emoji}</div>
+        <img class="game-card-image" src="https://api.dicebear.com/7.x/shapes/svg?seed=${game.id}&backgroundColor=16162a,1e293b" alt="${game.title}" />
         <div class="game-card-content">
           <h3 class="game-card-title">${game.title}</h3>
           <p class="game-card-description">${game.description}</p>
