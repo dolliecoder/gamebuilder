@@ -161,6 +161,7 @@ const FlappyGame = (() => {
     // Keyboard jump
     document.addEventListener('keydown', (e) => {
       if (["Space", "ArrowUp", " "].includes(e.key)) {
+        e.preventDefault(); // Prevent page scrolling
         if (isPlaying && !isGameOver) {
           bird.flap();
         } else if (!isPlaying || isGameOver) {

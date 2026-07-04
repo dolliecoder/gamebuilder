@@ -256,6 +256,10 @@ const TetrisGame = (() => {
 
   const setupControls = () => {
     document.addEventListener('keydown', (e) => {
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+      }
+      
       if (!isPlaying || isGameOver) {
         if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
           if (isGameOver) resetGame();
