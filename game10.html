@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Bird - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>🐦 Flappy Bird</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">
+          Tap or press space to fly through the pipes!
+        </p>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container">
+          <!-- Game Stats -->
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="flappy-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="flappy-best">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status -->
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; color: #667eea; margin-top: 1rem;"></div>
+
+          <!-- Game Grid -->
+          <div style="display: flex; justify-content: center; margin: 2rem 0; cursor: pointer;" id="flappy-container">
+            <canvas id="flappy-board" width="320" height="480" style="
+              background: #70c5ce; 
+              border-radius: 12px; 
+              box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+              border: 4px solid #667eea;
+            "></canvas>
+          </div>
+          
+          <!-- Game Controls -->
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Press <strong>Spacebar</strong>, <strong>Up Arrow</strong>, or click the game area to jump.</li>
+              <li>Navigate the bird through the gaps in the green pipes.</li>
+              <li>Don't hit the ground or the pipes!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="flappy.js"></script>
+  </body>
+</html>

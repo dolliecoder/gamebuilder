@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minesweeper - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .minesweeper-board {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 2px;
+        margin: 2rem auto;
+        width: 320px;
+        max-width: 100%;
+        background-color: #34495e;
+        padding: 4px;
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      }
+      .mine-cell {
+        aspect-ratio: 1;
+        background-color: #bdc3c7;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.1s;
+      }
+      .mine-cell:hover:not(.revealed) {
+        background-color: #ecf0f1;
+      }
+      .mine-cell.revealed {
+        background-color: #fff;
+        cursor: default;
+      }
+      .mine-cell.flagged {
+        background-color: #f1c40f;
+        color: #fff;
+      }
+      .mine-cell.mine {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+      
+      .color-1 { color: #3498db; }
+      .color-2 { color: #2ecc71; }
+      .color-3 { color: #e74c3c; }
+      .color-4 { color: #9b59b6; }
+      .color-5 { color: #f39c12; }
+      .color-6 { color: #1abc9c; }
+      .color-7 { color: #34495e; }
+      .color-8 { color: #7f8c8d; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-header">
+        <h1>💣 Minesweeper</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">Find all the mines without clicking on them!</p>
+      </div>
+
+      <div class="page-content">
+        <div class="container">
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Mines Left</div>
+              <div class="stat-value" id="mine-count">10</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Time</div>
+              <div class="stat-value" id="mine-timer">0s</div>
+            </div>
+          </div>
+
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; margin-top: 1rem;"></div>
+
+          <div class="minesweeper-board" id="minesweeper-board"></div>
+
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+            <button class="btn btn-primary" data-action="restart">
+              🔄 Restart
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+          
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li><strong>Left Click</strong> to reveal a square.</li>
+              <li><strong>Right Click</strong> (or long press on mobile) to flag a mine.</li>
+              <li>Numbers indicate how many mines are adjacent to that square.</li>
+              <li>Clear all non-mine squares to win!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="minesweeper.js"></script>
+  </body>
+</html>

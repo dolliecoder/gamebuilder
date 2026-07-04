@@ -62,12 +62,54 @@ const GameHub = (() => {
       url: 'game8.html',
     },
     rps: {
-      id: 'rps',
+      id: 'game9',
       title: 'Rock Paper Scissors',
-      description: 'Play against the AI. Can you get the highest winning streak?',
+      description: 'Play against the AI and try to build the highest winning streak.',
       emoji: '✊',
       url: 'game9.html',
     },
+    flappy: {
+      id: 'game10',
+      title: 'Flappy Bird',
+      description: 'Navigate the bird through the pipes. Tap to jump and avoid crashing!',
+      emoji: '🐦',
+      url: 'game10.html',
+    },
+    wordle: {
+      id: 'game11',
+      title: 'Wordle Clone',
+      description: 'Guess the hidden 5-letter word in 6 tries with color-coded hints.',
+      emoji: '🔤',
+      url: 'game11.html',
+    },
+    minesweeper: {
+      id: 'game12',
+      title: 'Minesweeper',
+      description: 'Find all the hidden mines on the board using number clues.',
+      emoji: '💣',
+      url: 'game12.html',
+    },
+    connect4: {
+      id: 'game13',
+      title: 'Connect Four',
+      description: 'Play against the AI and be the first to connect four colored discs.',
+      emoji: '🔴',
+      url: 'game13.html',
+    },
+    invaders: {
+      id: 'game14',
+      title: 'Space Invaders',
+      description: 'Shoot the descending aliens before they reach your ship.',
+      emoji: '👾',
+      url: 'game14.html',
+    },
+    tetris: {
+      id: 'game15',
+      title: 'Tetris',
+      description: 'Rotate and place falling blocks to clear lines and score points.',
+      emoji: '🧩',
+      url: 'game15.html',
+    }
   };
 
   /**

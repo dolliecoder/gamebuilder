@@ -15,6 +15,12 @@ const StorageManager = (() => {
     WHACKAMOLE_BEST: 'gamehub_whackamole_best',
     TYPING_BEST: 'gamehub_typing_best',
     RPS_STREAK: 'gamehub_rps_streak',
+    FLAPPY_BEST: 'gamehub_flappy_best',
+    WORDLE_STREAK: 'gamehub_wordle_streak',
+    MINESWEEPER_BEST: 'gamehub_minesweeper_best',
+    CONNECT4_WINS: 'gamehub_connect4_wins',
+    INVADERS_BEST: 'gamehub_invaders_best',
+    TETRIS_BEST: 'gamehub_tetris_best',
     LAST_GAME: 'gamehub_last_game',
     TOTAL_GAMES: 'gamehub_total_games',
     GAME_HISTORY: 'gamehub_game_history',
@@ -53,6 +59,24 @@ const StorageManager = (() => {
     }
     if (!localStorage.getItem(STORAGE_KEYS.RPS_STREAK)) {
       localStorage.setItem(STORAGE_KEYS.RPS_STREAK, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.FLAPPY_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.FLAPPY_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.WORDLE_STREAK)) {
+      localStorage.setItem(STORAGE_KEYS.WORDLE_STREAK, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.MINESWEEPER_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.MINESWEEPER_BEST, JSON.stringify(null)); // Stores time in seconds, null means no score yet
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.CONNECT4_WINS)) {
+      localStorage.setItem(STORAGE_KEYS.CONNECT4_WINS, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.INVADERS_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.INVADERS_BEST, JSON.stringify(0));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.TETRIS_BEST)) {
+      localStorage.setItem(STORAGE_KEYS.TETRIS_BEST, JSON.stringify(0));
     }
     if (!localStorage.getItem(STORAGE_KEYS.TOTAL_GAMES)) {
       localStorage.setItem(STORAGE_KEYS.TOTAL_GAMES, JSON.stringify(0));
@@ -236,7 +260,15 @@ const StorageManager = (() => {
         simonBest: getHighScore(STORAGE_KEYS.SIMON_BEST),
         whackamoleBest: getHighScore(STORAGE_KEYS.WHACKAMOLE_BEST),
         typingBest: getHighScore(STORAGE_KEYS.TYPING_BEST),
-        rpsStreak: getHighScore(STORAGE_KEYS.RPS_STREAK)
+        rpsStreak: getHighScore(STORAGE_KEYS.RPS_STREAK),
+      },
+      latestGames: {
+        flappyBest: getHighScore(STORAGE_KEYS.FLAPPY_BEST),
+        wordleStreak: getHighScore(STORAGE_KEYS.WORDLE_STREAK),
+        minesweeperBest: getHighScore(STORAGE_KEYS.MINESWEEPER_BEST),
+        connect4Wins: getHighScore(STORAGE_KEYS.CONNECT4_WINS),
+        invadersBest: getHighScore(STORAGE_KEYS.INVADERS_BEST),
+        tetrisBest: getHighScore(STORAGE_KEYS.TETRIS_BEST),
       },
       history: getGameHistory(),
     };

@@ -122,7 +122,42 @@
             </div>
           </div>
 
-          <!-- Recent Games -->
+          <!-- Latest Games Stats -->
+          <h2 style="margin-top: 2.5rem; margin-bottom: 1.5rem;">🔥 Latest Games High Scores</h2>
+          <div class="dashboard-grid">
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">🐦 Flappy Bird</div>
+              <div id="latest-flappy" class="dashboard-item-value">0</div>
+              <div class="dashboard-item-detail">Pipes Passed</div>
+            </div>
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">🔤 Wordle</div>
+              <div id="latest-wordle" class="dashboard-item-value">0</div>
+              <div class="dashboard-item-detail">Current Streak</div>
+            </div>
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">💣 Minesweeper</div>
+              <div id="latest-minesweeper" class="dashboard-item-value">--</div>
+              <div class="dashboard-item-detail">Best Time (seconds)</div>
+            </div>
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">🔴 Connect Four</div>
+              <div id="latest-connect4" class="dashboard-item-value">0</div>
+              <div class="dashboard-item-detail">Wins vs AI</div>
+            </div>
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">👾 Space Invaders</div>
+              <div id="latest-invaders" class="dashboard-item-value">0</div>
+              <div class="dashboard-item-detail">High Score</div>
+            </div>
+            <div class="dashboard-item">
+              <div class="dashboard-item-title">🧩 Tetris</div>
+              <div id="latest-tetris" class="dashboard-item-value">0</div>
+              <div class="dashboard-item-detail">High Score</div>
+            </div>
+          </div>
+
+          <!-- Recent Games List -->
           <h2 style="margin-top: 2.5rem; margin-bottom: 1.5rem;">📝 Recent Games</h2>
           <div id="recent-games-container" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
             <div id="recent-games" style="color: #999; text-align: center;">No games played yet</div>
@@ -172,6 +207,9 @@
 
         // New Games Stats
         updateNewGamesStats(data.newGames);
+
+        // Latest Games Stats
+        updateLatestGamesStats(data.latestGames);
 
         // Recent Games
         updateRecentGames(data.history);
@@ -271,6 +309,26 @@
         }
         
         document.getElementById('new-rps').textContent = newGamesData.rpsStreak || 0;
+      };
+
+      /**
+       * Update Latest Games statistics
+       */
+      const updateLatestGamesStats = (latestGamesData) => {
+        if (!latestGamesData) return;
+        
+        document.getElementById('latest-flappy').textContent = latestGamesData.flappyBest || 0;
+        document.getElementById('latest-wordle').textContent = latestGamesData.wordleStreak || 0;
+        
+        if (latestGamesData.minesweeperBest !== null && latestGamesData.minesweeperBest !== undefined) {
+          document.getElementById('latest-minesweeper').textContent = `${latestGamesData.minesweeperBest}s`;
+        } else {
+          document.getElementById('latest-minesweeper').textContent = '--';
+        }
+        
+        document.getElementById('latest-connect4').textContent = latestGamesData.connect4Wins || 0;
+        document.getElementById('latest-invaders').textContent = latestGamesData.invadersBest || 0;
+        document.getElementById('latest-tetris').textContent = latestGamesData.tetrisBest || 0;
       };
 
       /**

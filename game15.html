@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tetris - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-header">
+        <h1>🧩 Tetris</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">Stack the blocks to clear lines!</p>
+      </div>
+
+      <div class="page-content">
+        <div class="container">
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="tetris-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="tetris-best">0</div>
+            </div>
+          </div>
+
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; color: #667eea; margin-top: 1rem;"></div>
+
+          <div style="display: flex; justify-content: center; margin: 2rem 0; outline: none;" id="tetris-container" tabindex="0">
+            <canvas id="tetris-board" width="240" height="400" style="
+              background: #0f0f1e; 
+              border-radius: 4px; 
+              box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+              border: 4px solid #667eea;
+            "></canvas>
+          </div>
+          
+          <div class="mobile-controls" style="display: none; justify-content: center; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+            <button class="btn btn-primary" style="padding: 15px;" data-dir="UP">🔄 Rotate</button>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn btn-primary" style="padding: 15px;" data-dir="LEFT">⬅️ Left</button>
+              <button class="btn btn-primary" style="padding: 15px;" data-dir="DOWN">⬇️ Drop</button>
+              <button class="btn btn-primary" style="padding: 15px;" data-dir="RIGHT">Right ➡️</button>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Use the <strong>Left and Right Arrow Keys</strong> to move the piece.</li>
+              <li>Press <strong>Up Arrow</strong> to rotate the piece.</li>
+              <li>Press <strong>Down Arrow</strong> to drop it faster.</li>
+              <li>Complete horizontal lines to clear them and earn points.</li>
+              <li>Don't let the blocks reach the top!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="tetris.js"></script>
+  </body>
+</html>

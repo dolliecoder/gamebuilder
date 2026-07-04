@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders - GameHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-header">
+        <h1>👾 Space Invaders</h1>
+        <p style="color: white; font-size: 1rem; margin: 0;">Shoot down the alien invaders before they reach Earth!</p>
+      </div>
+
+      <div class="page-content">
+        <div class="container">
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="invaders-score">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Best Score</div>
+              <div class="stat-value" id="invaders-best">0</div>
+            </div>
+          </div>
+
+          <div class="game-status" style="text-align: center; height: 30px; font-weight: bold; font-size: 1.2rem; color: #667eea; margin-top: 1rem;"></div>
+
+          <div style="display: flex; justify-content: center; margin: 2rem 0; outline: none;" id="invaders-container" tabindex="0">
+            <canvas id="invaders-board" width="400" height="500" style="
+              background: #000; 
+              border-radius: 12px; 
+              box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+              border: 4px solid #667eea;
+            "></canvas>
+          </div>
+          
+          <div class="mobile-controls" style="display: none; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+            <button class="btn btn-primary" style="padding: 15px;" data-dir="LEFT">⬅️ Left</button>
+            <button class="btn btn-outline" style="padding: 15px; border-color: #ff4757; color: #ff4757;" data-dir="SHOOT">🔥 Shoot</button>
+            <button class="btn btn-primary" style="padding: 15px;" data-dir="RIGHT">Right ➡️</button>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" data-action="start">
+              ▶️ Start Game
+            </button>
+            <button class="btn btn-outline" data-action="home">
+              🏠 Back to Home
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">How to Play</h3>
+            <ul style="color: #666; line-height: 1.8;">
+              <li>Use the <strong>Left and Right Arrow Keys</strong> or <strong>A and D</strong> to move your ship.</li>
+              <li>Press <strong>Spacebar</strong> to shoot lasers.</li>
+              <li>Destroy all aliens to advance to the next, faster wave!</li>
+              <li>Game over if an alien touches your ship or reaches the bottom.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="storage.js"></script>
+    <script src="invaders.js"></script>
+  </body>
+</html>
